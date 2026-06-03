@@ -9,18 +9,15 @@
     <meta name="description" content="Baixe o voicebank do Axel Otomari para o software UTAU e OpenUTAU. Banco de voz CV gratuito para produção musical e síntese de voz.">
     <meta name="keywords" content="Axel Otomari, Voicebank, UTAU, OpenUTAU, Banco de Voz, Download, Zarik-P, Música, CV, Síntese de Voz">
     <meta name="author" content="Zarik-P">
-    <link rel="canonical" href="https://axelotomarivoicebank.netlify.app/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://axelotomarivoicebank.netlify.app/">
     <meta property="og:title" content="Axel Otomari Voicebank - UTAU">
     <meta property="og:description" content="Baixe o voicebank do Axel Otomari para o software UTAU e OpenUTAU. Banco de voz CV gratuito para produção musical e síntese de voz.">
     <meta property="og:image" content="https://i.postimg.cc/pr2d4m5H/130-Sem-Titulo.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://axelotomarivoicebank.netlify.app/">
     <meta property="twitter:title" content="Axel Otomari Voicebank - UTAU">
     <meta property="twitter:description" content="Baixe o voicebank do Axel Otomari para o software UTAU e OpenUTAU. Banco de voz CV gratuito para produção musical e síntese de voz.">
     <meta property="twitter:image" content="https://i.postimg.cc/pr2d4m5H/130-Sem-Titulo.jpg">
@@ -37,6 +34,7 @@
             --cyan-main: #00f0ff;
             --text-white: #ffffff;
             --text-gray: #a5a1b8;
+            --green-update: #00ff66;
         }
 
         * {
@@ -57,7 +55,6 @@
                 linear-gradient(90deg, rgba(139, 70, 255, 0.08) 1px, transparent 1px);
             background-size: 100% 100%, 20px 20px, 20px 20px;
             background-attachment: fixed;
-            
             max-width: 100vw;
             overflow-x: hidden;
             position: relative;
@@ -88,17 +85,8 @@
             font-weight: 700;
             font-size: 1.1rem;
             color: var(--purple-main);
-            cursor: pointer;
+            cursor: default;
             user-select: none;
-            transition: transform 0.2s, filter 0.2s;
-        }
-
-        .logo-area:hover {
-            filter: brightness(1.2);
-        }
-
-        .logo-area:active {
-            transform: scale(0.97);
         }
 
         .logo-img {
@@ -108,12 +96,7 @@
             object-fit: cover;
             border: 1.5px solid var(--purple-main);
             box-shadow: 0 0 8px rgba(139, 70, 255, 0.4);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .logo-img:active {
-            transform: scale(0.9);
+            cursor: default;
         }
 
         .menu-burguer {
@@ -134,15 +117,9 @@
             transition: transform 0.3s, opacity 0.3s;
         }
 
-        .menu-burguer.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-        .menu-burguer.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-burguer.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
+        .menu-burguer.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-burguer.open span:nth-child(2) { opacity: 0; }
+        .menu-burguer.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         .nav-menu {
             position: fixed;
@@ -162,9 +139,7 @@
             z-index: 101;
         }
 
-        .nav-menu.active {
-            right: 0;
-        }
+        .nav-menu.active { right: 0; }
 
         .nav-menu a {
             color: var(--text-white);
@@ -189,7 +164,6 @@
             text-align: center;
         }
 
-        /* Hero Section com o Personagem Integrado ao Fundo */
         .hero-intro-container {
             position: relative;
             width: 100%;
@@ -199,18 +173,27 @@
             margin-bottom: 30px;
             background-color: rgba(24, 18, 37, 0.4);
             border: 1px solid rgba(139, 70, 255, 0.1);
+        }
+
+        .hero-background-character {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('https://files.catbox.moe/stekel.png');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
-            box-shadow: inset 0 0 40px rgba(13, 9, 20, 0.6);
+            opacity: 1;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        /* Camada para suavizar e dar contraste ao conteúdo da frente */
         .hero-content-glass {
             position: relative;
             z-index: 5;
-            background: rgba(24, 18, 37, 0.65);
+            background: rgba(24, 18, 37, 0.72);
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
             padding: 20px 10px;
@@ -288,14 +271,12 @@
             color: #d1bfff;
         }
 
-        .character-info span strong {
-            color: var(--text-white);
-        }
+        .character-info span strong { color: var(--text-white); }
 
         .tooltip {
             position: relative;
-            cursor: pointer;
-            border-bottom: 1px dotted var(--cyan-main);
+            cursor: default;
+            border-bottom: none;
             user-select: none;
         }
 
@@ -336,20 +317,24 @@
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, opacity 0.2s;
+            transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
             text-decoration: none;
             margin-bottom: 15px;
             border: none;
         }
 
-        .btn:active {
-            transform: scale(0.98);
-        }
+        .btn:active { transform: scale(0.98); }
 
         .btn-purple {
             background-color: var(--purple-main);
             color: var(--text-white);
             box-shadow: 0 4px 15px rgba(139, 70, 255, 0.3);
+        }
+
+        .btn-orange-old {
+            background-color: #d97706;
+            color: var(--text-white);
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
         }
 
         .btn-outline {
@@ -366,11 +351,6 @@
             user-select: none;
         }
 
-        .btn-disabled:active {
-            transform: none !important;
-            opacity: 1 !important;
-        }
-
         .utau-explanation-box {
             display: none;
             background-color: rgba(0, 240, 255, 0.03);
@@ -385,9 +365,7 @@
             animation: fadeIn 0.3s ease-in-out;
         }
 
-        .utau-explanation-box strong {
-            color: var(--cyan-main);
-        }
+        .utau-explanation-box strong { color: var(--cyan-main); }
 
         .utau-credit {
             display: block;
@@ -444,7 +422,6 @@
         }
 
         .card-download.unavailable {
-            opacity: 0.65;
             border: 1px dashed rgba(139, 70, 255, 0.15);
         }
 
@@ -481,11 +458,54 @@
             border-radius: 14px;
         }
 
-        .card-version {
-            color: rgba(255,255,255,0.3);
-            font-size: 0.8rem;
-            font-weight: 700;
+        .badge-update-notify {
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-transform: uppercase;
+            user-select: none;
         }
+
+        .update-changelog-box {
+            display: none;
+            background-color: rgba(0, 255, 102, 0.03);
+            border: 1px solid rgba(0, 255, 102, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 0.82rem;
+            color: #cbf7da;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .version-select-wrapper {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .version-dropdown {
+            background-color: #0d0914;
+            color: var(--text-white);
+            border: 1px solid rgba(139, 70, 255, 0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+        }
+        .version-dropdown:focus { border-color: var(--cyan-main); }
 
         .card-title {
             font-size: 1.3rem;
@@ -506,17 +526,13 @@
             font-weight: 600;
         }
 
-        .card-link:hover {
-            color: #7de8ff;
-        }
-
         .badge-unavailable {
             display: inline-block;
-            background-color: rgba(255, 77, 77, 0.1);
-            border: 1px solid rgba(255, 77, 77, 0.25);
-            color: #ff6666;
+            background-color: rgba(255, 77, 77, 0.04);
+            border: 1px solid rgba(255, 77, 77, 0.15);
+            color: #aa7777;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 600;
             padding: 4px 10px;
             border-radius: 6px;
             margin-bottom: 15px;
@@ -581,9 +597,7 @@
             line-height: 1.6;
         }
 
-        .info-box-text strong {
-            color: var(--text-white);
-        }
+        .info-box-text strong { color: var(--text-white); }
 
         .info-divider {
             border: 0;
@@ -650,7 +664,7 @@
             color: #c3bfdb;
             font-family: monospace;
             font-size: 0.78rem;
-            white-space: pre;
+            white-space: pre-wrap;
             overflow-y: scroll;
             margin-bottom: 15px;
         }
@@ -715,9 +729,7 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        #easter-egg-container.active {
-            opacity: 1;
-        }
+        #easter-egg-container.active { opacity: 1; }
 
         .scary-frog {
             width: 260px;
@@ -731,7 +743,6 @@
             font-weight: 900;
             color: #ffffff;
             text-shadow: 0 0 15px #ff0000, 0 0 5px #000000;
-            letter-spacing: -1px;
             text-transform: uppercase;
             text-align: center;
             padding: 0 10px;
@@ -751,9 +762,7 @@
             100% { transform: translate(1px, -3px) rotate(-1.5deg); }
         }
 
-        .shaking-world {
-            animation: chaoticShake 0.08s infinite;
-        }
+        .shaking-world { animation: chaoticShake 0.08s infinite; }
 
         #visual-logger-panel {
             display: none;
@@ -778,9 +787,7 @@
         .log-entry { margin-bottom: 4px; border-left: 2px solid #666; padding-left: 5px; color: #d0cce0; }
         .log-entry.info { border-color: #00f0ff; color: #a6f5ff; }
         .log-entry.success { border-color: #00ff66; color: #bbfccb; }
-        .log-entry.error { border-color: #ff3366; color: #ffccd7; }
 
-        /* Estilos dos Sapinhos Físicos do Easter Egg */
         .falling-frog {
             position: fixed;
             width: 50px;
@@ -792,7 +799,6 @@
             will-change: transform;
         }
 
-        /* Botão para limpar sapos */
         #btn-limpar-sapos {
             display: none;
             position: fixed;
@@ -808,13 +814,6 @@
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: background 0.2s, transform 0.1s;
-        }
-        #btn-limpar-sapos:hover {
-            background: #ff3333;
-        }
-        #btn-limpar-sapos:active {
-            transform: scale(0.95);
         }
 
         footer {
@@ -827,14 +826,8 @@
             color: var(--text-gray);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        footer a {
-            color: var(--cyan-main);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+        footer a { color: var(--cyan-main); text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body id="body-main">
@@ -855,8 +848,8 @@
         <div id="visual-logger-panel"></div>
 
         <header>
-            <div class="logo-area" onclick="clicarAxelLogo()">
-                <img src="https://i.postimg.cc/pr2d4m5H/130-Sem-Titulo.jpg" alt="Logo Axel Otomari" class="logo-img" id="avatarLogo">
+            <div class="logo-area" id="logoClickTrigger">
+                <img src="https://i.postimg.cc/pr2d4m5H/130-Sem-Titulo.jpg" alt="Logo Axel Otomari" class="logo-img">
                 Axel Otomari VB
             </div>
             <div class="menu-burguer" id="menuBtn" onclick="toggleMenuLateral()">
@@ -869,6 +862,7 @@
         <div class="container">
 
             <div id="introducao" class="hero-intro-container" style="scroll-margin-top: 20px;">
+                <div class="hero-background-character"></div>
                 
                 <div class="hero-content-glass">
                     <div class="badge-status">
@@ -890,7 +884,7 @@
                         <span>Peso: <strong>55 kg</strong></span>
                         <span>•</span>
                         <br>
-                        <span class="tooltip" id="tooltipSapo" onclick="toggleTooltipSapo()">Item: <strong>Sapo de Pelúcia 🐸</strong>
+                        <span class="tooltip" id="tooltipSapo">Item: <strong>Sapo de Pelúcia 🐸</strong>
                             <span class="tooltiptext">Um sapo antigo com o qual ele brincava muito na infância. Ele pegou tanto afeto pela pelúcia que se recusa a jogar fora; mesmo não brincando mais, hoje o deixa guardado como decoração.</span>
                         </span>
                     </div>
@@ -909,7 +903,6 @@
                         <span class="utau-credit">— Fonte: Wikipédia</span>
                     </div>
                 </div>
-
             </div>
 
             <div class="stats-row">
@@ -940,29 +933,44 @@
                         <div class="card-icon">
                             <img src="https://i.postimg.cc/pr2d4m5H/130-Sem-Titulo.jpg" alt="Axel Otomari" class="card-icon-img">
                         </div>
-                        <div class="card-version">v1.0</div>
+                        <div class="card-version-area">
+                            <div class="badge-update-notify" id="changelogTrigger">
+                                🔔 Atualizado 1.3
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card-title">Axel Otomari — CV</div>
+                    <div class="update-changelog-box" id="changelogBox">
+                        ✨ <strong>Nova Atualização!</strong> Hoje o Axel Otomari teve uma atualização em que sua <code>oto.ini</code> foi imensamente melhorada e refinada! Muito obrigado ao <strong>@TengaDaFox</strong> pela ajuda com as configurações, sério mesmo! 🐸✨
+                    </div>
+
+                    <div class="card-title" id="mainCardTitle">Axel Otomari — CV (v1.3)</div>
                     
-                    <p class="card-text">
-                        Voicebank CV (Consonant-Vowel) ideal para iniciantes. Contém as sílabas básicas do japonês e fonemas adicionais adaptados para outros idiomas.
+                    <p class="card-text" id="mainCardText">
+                        Voicebank CV (Consonant-Vowel) ideal para iniciantes. Contém as sílabas básicas do japonês e fonemas adicionais adaptados para outros idiomas. Versão com OTO.ini totalmente ajustada e profissional.
                     </p>
+
+                    <div class="version-select-wrapper">
+                        <label for="versionSelect">Escolher Versão:</label>
+                        <select id="versionSelect" class="version-dropdown" onchange="mudarVersaoMainBank(this.value)">
+                            <option value="1.3">v1.3 (Mais Recente)</option>
+                            <option value="1.0">v1.0 (Versão Antiga)</option>
+                        </select>
+                    </div>
 
                     <div class="tags-container">
                         <span class="tag-info" style="color: var(--purple-main); background: rgba(139, 70, 255, 0.15)">CV</span>
                         <span class="tag-info">Japonês</span>
-                        <span class="tag-info">Iniciante</span>
-                        <span class="tag-info">37 MB</span>
+                        <span class="tag-info" id="tagTamanhoBank">37.2 MB</span>
                     </div>
 
-                    <button class="btn btn-purple" onclick="abrirTermos('cv')">
+                    <button class="btn btn-purple" id="btnDownloadPrincipal" onclick="abrirTermos('cv')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        Baixar Voicebank
+                        <span id="btnDownloadText">Baixar Voicebank v1.3</span>
                     </button>
                 </div>
 
-                <div class="card-download unavailable">
+                <div class="card-download unavailable" id="cardCVVC">
                     <div class="card-header-flex">
                         <div class="card-icon" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 14px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a546e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
@@ -1020,26 +1028,16 @@
                 <div class="info-box-title">
                     <span>ℹ️</span> Como Instalar e Usar:
                 </div>
-                
                 <div class="info-box-text">
                     <strong>Computador (UTAU / OpenUTAU):</strong><br>
                     Baixe o arquivo .zip do voicebank, extraia o conteúdo diretamente dentro da pasta de vozes (<code>Singers</code> ou <code>voice</code>) do seu programa instalado no Windows/Mac/Linux.
                 </div>
-
                 <div class="info-divider"></div>
-
                 <div class="info-box-text">
                     <strong>Celular (OpenUTAU Mobile):</strong><br>
                     Após entrar no aplicativo, acesse a aba <strong>Singers</strong>. Toque no botão <strong>+</strong> localizado no canto inferior direito e importe o arquivo .zip do voicebank. Certifique-se de definir a codificação de texto correta selecionando <strong>Shift-JIS</strong> para que as pastas leiam os fonemas japoneses certinho.
                 </div>
-
-                <div class="info-divider"></div>
-
-                <div class="info-box-text" style="color: var(--cyan-main); font-size: 0.85rem; font-weight: 500;">
-                    💡 <strong>Compatibilidade total:</strong> Em ambas as plataformas (PC e Mobile), o voicebank principal roda normalmente utilizando o phonemizer <strong>VCV to CVVC</strong> para suavizar os cantos!
-                </div>
             </div>
-
         </div>
 
         <div class="modal-overlay" id="termsModal">
@@ -1065,25 +1063,21 @@
 
                 <div class="modal-buttons">
                     <button class="btn btn-outline" style="padding: 10px; margin:0;" onclick="fecharTermos()">Cancelar</button>
-                    <button class="btn btn-purple" style="padding: 10px; margin:0; flex-grow: 1;" onclick="prosseguirDownload()">Prosseguir</button>
+                    <button class="btn btn-purple" id="btnProsseguirDownload" style="padding: 10px; margin:0; flex-grow: 1;" onclick="prosseguirDownload()">Prosseguir</button>
                 </div>
             </div>
         </div>
 
-        <!-- Modal do Easter Egg do Axel Careca -->
         <div class="modal-overlay" id="easterEggModal">
             <div class="modal-box" style="text-align: center; border-color: var(--cyan-main); box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);">
                 <div class="modal-title" style="color: var(--cyan-main); font-weight: 800; letter-spacing: 1px;">VOCÊ DESCOBRIU O AXEL CARECA!</div>
-                
-                <div style="margin: 20px auto; width: 100%; max-width: 280px; overflow: hidden; border-radius: 14px; border: 2px solid var(--cyan-main); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); background-color: #0d0914;">
+                <div style="margin: 20px auto; width: 100%; max-width: 280px; overflow: hidden; border-radius: 14px; border: 2px solid var(--cyan-main); background-color: #0d0914;">
                     <img src="https://files.catbox.moe/683jxk.png" alt="Axel Careca" style="width: 100%; height: auto; display: block;">
                 </div>
-                
                 <p style="color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; padding: 0 10px;">
                     Parabéns, você encontrou o Axel em sua versão ultra-aerodinâmica e brilhante! 👩‍🦲✨
                 </p>
-                
-                <button class="btn btn-purple" style="background-color: var(--cyan-main); color: #0d0914; font-weight: 800; box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3); margin-bottom: 0;" onclick="fecharEasterEgg()">
+                <button class="btn btn-purple" style="background-color: var(--cyan-main); color: #0d0914; font-weight: 800;" onclick="fecharEasterEgg()">
                     Incrível!
                 </button>
             </div>
@@ -1097,31 +1091,55 @@
         <footer>
             Caso encontre algum erro em algum voicebank, me diga em <a href="mailto:Pablohenriquemotadacosta7@gmail.com">Pablohenriquemotadacosta7@gmail.com</a>
         </footer>
-
     </div>
 
     <script>
         const URL_PEGAR_VALOR = "https://nickserver01.x10.mx/valor.php?servidor_id=89&token=2c339f150fb2261e287478c3eca0f86fd2a67f7d55fc456cc3cc7468756f478e";
         const URL_TROCAR_VALOR = "https://nickserver01.x10.mx/Trocar.php?servidor_id=89&token=2c339f150fb2261e287478c3eca0f86fd2a67f7d55fc456cc3cc7468756f478e&valor=";
         
-        const LINK_DOWNLOAD_AXEL_CV = "https://files.catbox.moe/8gmcaz.zip";
+        const LINK_DOWNLOAD_AXEL_V1_3 = "https://files.catbox.moe/k1frin.zip"; 
+        const LINK_DOWNLOAD_AXEL_V1_0 = "https://files.catbox.moe/8gmcaz.zip";
         const LINK_DOWNLOAD_AXEL_SECRETO = "https://files.catbox.moe/marmtr.zip";
         const SOM_SAPO_URL = "https://files.catbox.moe/x30x95.mp3";
 
         let numeroDownloadsGlobal = 14; 
-        let bancoAtualSelecionado = '';
+        let bancoAtualSelecionado = 'cv'; 
+        let versaoAtivaDropdown = '1.3';
         let cliquesCVVC = 0;
         let cliquesAxelLogo = 0;
-
-        // Controle do Easter Egg dos Sapinhos
         let cliquesSapoContador = 0;
         let listaDeSapos = [];
         const sapoImgSrc = "https://files.catbox.moe/6isnuo.png";
         let loopFisicaAtivo = false;
-
-        // Sistema Web Audio API para controle de Pitch
         let audioCtx = null;
         let audioBufferSapo = null;
+
+        const somSusto = document.getElementById('som-susto');
+        const somRevelar = document.getElementById('som-revelar');
+
+        const txtTermosCV = `======================================================================
+                    AXEL OTOMARI - VOICEBANK TERMS OF USE
+======================================================================
+Desenvolvedor / Produtor: ざりくP (Zarik-P)
+
+Obrigado por baixar o Voicebank do Axel Otomari! Antes de usar este banco de dados de voz em suas produções musicais ou projetos, leia atentamente e concorde com as seguintes condições descritas abaixo:
+
+1. USO COMERCIAL E NÃO COMERCIAL
+- O uso deste voicebank é totalmente PERMITIDO e gratuito para a criação de músicas originais, covers, produções independentes e jogos indie com fins lucrativos ou não lucrativos.
+- Você DEVE atribuir os créditos do banco de voz ao criador utilizando o nome "ざりくP" ou "Zarik-P".
+
+2. CONTEÚDO PROIBIDO (RESTRIÇÕES DE USO)
+- É terminantemente PROIBIDO o uso da voz ou imagem do personagem Axel Otomari para fins políticos, religiosos, difamatórios, discursos de ódio ou associação a preconceitos.
+- Conteúdos de cunho explicitamente pornográfico ou sexual (NSFW) pesado utilizando o personagem e sua voz são proibidos.
+
+3. REDISTRIBUIÇÃO E MERCHANDISING
+- É proibida a revenda ou redistribuição dos arquivos brutos (.zip, amostras de áudio, oto.ini) em outros locais sem o consentimento do autor original.
+- A criação de merchandising físico e produtos físicos para venda em massa com fins de lucro é PROIBIDA. O uso de imagens e artes do personagem é livre para itens pessoais.
+
+4. ISENÇÃO DE RESPONSABILIDADE
+- O criador (Zarik-P) não se responsabiliza por quaisquer danos ou problemas causados pelo uso direto ou indireto deste software em seus dispositivos ou produções.
+
+======================================================================`;
 
         function logVisual(mensagem, tipo = 'info') {
             const painel = document.getElementById('visual-logger-panel');
@@ -1131,26 +1149,26 @@
             entrada.innerText = `[${new Date().toLocaleTimeString()}] ${mensagem}`;
             painel.appendChild(entrada);
             painel.scrollTop = painel.scrollHeight;
-            console.log(`[${tipo.toUpperCase()}] ${mensagem}`);
         }
 
-        document.getElementById('avatarLogo').addEventListener('click', function() {
+        // Logs passam a funcionar ao abrir o painel secreto da logo
+        document.getElementById('logoClickTrigger').addEventListener('click', function() {
+            cliquesAxelLogo++;
             const painel = document.getElementById('visual-logger-panel');
-            if (painel.style.display === 'block') {
-                painel.style.display = 'none';
-            } else {
-                painel.style.display = 'block';
-                logVisual("Console de desenvolvimento aberto via gatilho interno (Foto de perfil).", "success");
+            
+            if (cliquesAxelLogo === 1) {
+                painel.style.display = (painel.style.display === 'block') ? 'none' : 'block';
+                logVisual("Painel do Desenvolvedor inicializado.", "info");
+                logVisual("Monitorando cliques nos componentes ocultos...", "info");
+            }
+
+            if (cliquesAxelLogo === 6) {
+                cliquesAxelLogo = 0;
+                logVisual("Easter Egg acionado: Axel Careca!", "success");
+                if (somRevelar) { somRevelar.currentTime = 0; somRevelar.play().catch(e=>{}); }
+                document.getElementById('easterEggModal').classList.add('active');
             }
         });
-
-        function verificarParametroDebug() {
-            const parametros = new URLSearchParams(window.location.search);
-            if (parametros.get('debug') === 'true') {
-                document.getElementById('visual-logger-panel').style.display = 'block';
-                logVisual("Modo de depuração ativado via URL.", "success");
-            }
-        }
 
         function toggleMenuLateral() {
             const menu = document.getElementById('navMenu');
@@ -1164,95 +1182,94 @@
             document.getElementById('menuBtn').classList.remove('open');
         }
 
-        // Sistema Interativo do Tooltip do Sapo + Geração de Clones Físicos
-        function toggleTooltipSapo() {
-            const tooltip = document.getElementById('tooltipSapo');
-            tooltip.classList.toggle('show-box');
-            
+        // Easter egg dos sapos restaurado e corrigido
+        document.getElementById('tooltipSapo').addEventListener('click', function() {
+            this.classList.toggle('show-box');
             cliquesSapoContador++;
-            logVisual(`Caixa do sapinho alterada. Total de interações: ${cliquesSapoContador}`, "info");
-
-            if (cliquesSapoContador === 6 || (cliquesSapoContador > 6 && tooltip.classList.contains('show-box'))) {
+            logVisual(`Clique detectado no item secreto. Total: ${cliquesSapoContador}`, "info");
+            
+            if (cliquesSapoContador >= 6) {
+                logVisual("Gatilho alcançado! Despejando sapos no ecossistema.", "success");
                 criarSapoFisico();
                 tocarSomSapoDinamico();
             }
+        });
+
+        document.getElementById('changelogTrigger').addEventListener('click', function(event) {
+            event.stopPropagation();
+            const changelog = document.getElementById('changelogBox');
+            changelog.style.display = (changelog.style.display === 'block') ? 'none' : 'block';
+            logVisual("Painel de logs de atualização alternado.", "info");
+        });
+
+        function mudarVersaoMainBank(versao) {
+            versaoAtivaDropdown = versao;
+            const btnDownload = document.getElementById('btnDownloadPrincipal');
+            const btnText = document.getElementById('btnDownloadText');
+            const title = document.getElementById('mainCardTitle');
+            const desc = document.getElementById('mainCardText');
+            const tagTamanho = document.getElementById('tagTamanhoBank');
+
+            logVisual(`Versão alterada pelo seletor para: v${versao}`, "info");
+
+            if (versao === '1.0') {
+                title.innerText = "Axel Otomari — CV (v1.0)";
+                desc.innerText = "Voicebank CV (Consonant-Vowel) em sua primeira edição original lançada. Mantido aqui como arquivo legível de segurança ou nostalgia.";
+                btnText.innerText = "Baixar Voicebank v1.0 (Antigo)";
+                tagTamanho.innerText = "37.0 MB";
+                btnDownload.classList.remove('btn-purple');
+                btnDownload.classList.add('btn-orange-old');
+            } else {
+                title.innerText = "Axel Otomari — CV (v1.3)";
+                desc.innerText = "Voicebank CV (Consonant-Vowel) ideal para iniciantes. Contém as sílabas básicas do japonês e fonemas adicionais adaptados para outros idiomas. Versão com OTO.ini totalmente ajustada e profissional.";
+                btnText.innerText = "Baixar Voicebank v1.3";
+                tagTamanho.innerText = "37.2 MB";
+                btnDownload.classList.remove('btn-orange-old');
+                btnDownload.classList.add('btn-purple');
+            }
         }
 
-        // Pré-carrega o áudio do sapo via Fetch para a Web Audio API operar o pitch
         async function carregarAudioBufferSapo() {
             if (!audioCtx) return;
             try {
                 const response = await fetch(SOM_SAPO_URL);
                 const arrayBuffer = await response.arrayBuffer();
                 audioBufferSapo = await audioCtx.decodeAudioData(arrayBuffer);
-                logVisual("Áudio do sapinho bufferizado com sucesso.", "success");
-            } catch (e) {
-                logVisual("Erro ao carregar o som dinâmico do sapo.", "error");
-            }
+            } catch (e) {}
         }
 
         function tocarSomSapoDinamico() {
             if (!audioCtx || !audioBufferSapo) return;
-
-            // Cria a fonte de áudio
             const source = audioCtx.createBufferSource();
             source.buffer = audioBufferSapo;
-
-            // Escolhe aleatoriamente entre Fino (alto), Grosso (baixo) e Normal
-            // Chance equilibrada entre as três tonalidades
             const r = Math.random();
-            let pitch = 1.0; // Normal
-
-            if (r < 0.33) {
-                pitch = Math.random() * (1.7 - 1.4) + 1.4; // Fino
-            } else if (r < 0.66) {
-                pitch = Math.random() * (0.6 - 0.45) + 0.45; // Grosso
-            }
-
+            let pitch = 1.0;
+            if (r < 0.33) pitch = Math.random() * (1.7 - 1.4) + 1.4;
+            else if (r < 0.66) pitch = Math.random() * (0.6 - 0.45) + 0.45;
             source.playbackRate.value = pitch;
             source.connect(audioCtx.destination);
             source.start(0);
         }
 
         function criarSapoFisico() {
-            logVisual("Um novo sapinho de pelúcia pulou na tela!", "success");
-            
             const img = document.createElement('img');
             img.src = sapoImgSrc;
             img.className = 'falling-frog';
-            
-            // Define variação de paleta de cores (40% de chance)
             if (Math.random() < 0.40) {
-                const grausRotacaoCor = Math.floor(Math.random() * 330) + 30; // Escolhe tons exóticos aleatórios
-                img.style.filter = `hue-rotate(${grausRotacaoCor}deg)`;
+                img.style.filter = `hue-rotate(${Math.floor(Math.random() * 330) + 30}deg)`;
             }
-
             const xInicial = Math.random() * (window.innerWidth - 65) + 5;
-            // Spawna os sapos relativos à tela visualizada atual
-            const yInicial = 40; 
+            const yInicial = window.scrollY + 40; 
             
-            img.style.left = `0px`;
-            img.style.top = `0px`;
             document.body.appendChild(img);
-
             const objetoSapo = {
-                elemento: img,
-                x: xInicial,
-                y: yInicial,
-                velX: (Math.random() - 0.5) * 10, 
-                velY: Math.random() * 4 + 1,      
-                angulo: Math.random() * 360,
-                velRotacao: (Math.random() - 0.5) * 8,
-                gravidade: 0.35,
-                amortecimento: 0.70, 
-                largura: 50,
-                altura: 50,
-                raio: 25 // Usado para cálculo matemático de colisão circular
+                elemento: img, x: xInicial, y: yInicial,
+                velX: (Math.random() - 0.5) * 10, velY: Math.random() * 4 + 1,      
+                angulo: Math.random() * 360, velRotacao: (Math.random() - 0.5) * 8,
+                gravidade: 0.35, amortecimento: 0.70, largura: 50, altura: 50, raio: 25
             };
-
             listaDeSapos.push(objetoSapo);
             document.getElementById('btn-limpar-sapos').style.display = 'block';
-
             if (!loopFisicaAtivo) {
                 loopFisicaAtivo = true;
                 processarFisicaSapos();
@@ -1260,442 +1277,156 @@
         }
 
         function resolverColisaoEntreSapos() {
-            // Varre todos os pares possíveis de sapos para checar e aplicar colisão elástica rígida
             for (let i = 0; i < listaDeSapos.length; i++) {
                 for (let j = i + 1; j < listaDeSapos.length; j++) {
-                    const s1 = listaDeSapos[i];
-                    const s2 = listaDeSapos[j];
-
-                    // Distância real em eixos
-                    const dx = s2.x - s1.x;
-                    const dy = s2.y - s1.y;
+                    const s1 = listaDeSapos[i]; const s2 = listaDeSapos[j];
+                    const dx = s2.x - s1.x; const dy = s2.y - s1.y;
                     const distancia = Math.sqrt(dx * dx + dy * dy);
                     const distanciaMinima = s1.raio + s2.raio;
-
                     if (distancia < distanciaMinima) {
-                        // Calcula sobreposição para empurrá-los separadamente
                         const overlap = distanciaMinima - distancia;
-                        const nx = dx / (distancia || 1);
-                        const ny = dy / (distancia || 1);
-
-                        // Separa os corpos para não mesclarem na tela
-                        s1.x -= nx * overlap * 0.5;
-                        s1.y -= ny * overlap * 0.5;
-                        s2.x += nx * overlap * 0.5;
-                        s2.y += ny * overlap * 0.5;
-
-                        // Vetores de velocidade relativa
-                        const kx = s1.velX - s2.velX;
-                        const ky = s1.velY - s2.velY;
-                        const p = 2 * (nx * kx + ny * ky) / 2; // Massa igual a 1 para ambos
-
-                        // Altera os rumos das velocidades pós-impacto quicando perfeitamente
-                        s1.velX -= p * nx * 0.85;
-                        s1.velY -= p * ny * 0.85;
-                        s2.velX += p * nx * 0.85;
-                        s2.velY += p * ny * 0.85;
+                        const nx = dx / (distancia || 1); const ny = dy / (distancia || 1);
+                        s1.x -= nx * overlap * 0.5; s1.y -= ny * overlap * 0.5;
+                        s2.x += nx * overlap * 0.5; s2.y += ny * overlap * 0.5;
+                        const kx = s1.velX - s2.velX; const ky = s1.velY - s2.velY;
+                        const p = 2 * (nx * kx + ny * ky) / 2;
+                        s1.velX -= p * nx * 0.85; s1.velY -= p * ny * 0.85;
+                        s2.velX += p * nx * 0.85; s2.velY += p * ny * 0.85;
                     }
                 }
             }
         }
 
         function processarFisicaSapos() {
-            if (listaDeSapos.length === 0) {
-                loopFisicaAtivo = false;
-                return;
-            }
-
-            // Agora os sapos acompanham a janela do scroll em tempo real (Visão fixa e flutuante)
+            if (listaDeSapos.length === 0) { loopFisicaAtivo = false; return; }
             const topoVisivel = window.scrollY;
-            const alturaVisivel = window.innerHeight;
-            const chaoAtual = topoVisivel + alturaVisivel;
-
-            // Resolve colisões mútuas primeiro
+            const chaoAtual = topoVisivel + window.innerHeight;
             resolverColisaoEntreSapos();
-
             listaDeSapos.forEach(sapo => {
-                sapo.velY += sapo.gravidade;
-                sapo.x += sapo.velX;
-                sapo.y += sapo.velY;
-                sapo.angulo += sapo.velRotacao;
-
-                // Força o sapo a subir caso o usuário dê scroll descendente abrupto
-                if (sapo.y < topoVisivel - 10) {
-                    sapo.y = topoVisivel + 5;
-                    sapo.velY = Math.abs(sapo.velY) * 0.5;
-                }
-
-                // Limite inferior (Chão da tela visível atual)
+                sapo.velY += sapo.gravidade; sapo.x += sapo.velX; sapo.y += sapo.velY; sapo.angulo += sapo.velRotacao;
+                if (sapo.y < topoVisivel - 10) { sapo.y = topoVisivel + 5; sapo.velY = Math.abs(sapo.velY) * 0.5; }
                 if (sapo.y + sapo.altura >= chaoAtual) {
-                    sapo.y = chaoAtual - sapo.altura;
-                    sapo.velY = -sapo.velY * sapo.amortecimento;
-                    sapo.velRotacao = (Math.random() - 0.5) * 12;
-                    sapo.velX *= 0.95;
+                    sapo.y = chaoAtual - sapo.altura; sapo.velY = -sapo.velY * sapo.amortecimento;
+                    sapo.velRotacao = (Math.random() - 0.5) * 12; sapo.velX *= 0.95;
                 }
-
-                // Limite lateral esquerdo
-                if (sapo.x <= 0) {
-                    sapo.x = 0;
-                    sapo.velX = -sapo.velX * sapo.amortecimento;
-                    sapo.velRotacao *= -1;
-                } 
-                // Limite lateral direito
+                if (sapo.x <= 0) { sapo.x = 0; sapo.velX = -sapo.velX * sapo.amortecimento; sapo.velRotacao *= -1; } 
                 else if (sapo.x + sapo.largura >= window.innerWidth) {
-                    sapo.x = window.innerWidth - sapo.largura;
-                    sapo.velX = -sapo.velX * sapo.amortecimento;
-                    sapo.velRotacao *= -1;
+                    sapo.x = window.innerWidth - sapo.largura; sapo.velX = -sapo.velX * sapo.amortecimento; sapo.velRotacao *= -1;
                 }
-
                 sapo.elemento.style.transform = `translate3d(${sapo.x}px, ${sapo.y}px, 0) rotate(${sapo.angulo}deg)`;
             });
-
             requestAnimationFrame(processarFisicaSapos);
         }
 
         function apagarTodosOsSapos() {
-            logVisual("Limpando todos os sapinhos da tela...", "info");
-            listaDeSapos.forEach(sapo => {
-                if (sapo.elemento) sapo.elemento.remove();
-            });
+            listaDeSapos.forEach(sapo => { if (sapo.elemento) sapo.elemento.remove(); });
             listaDeSapos = [];
             document.getElementById('btn-limpar-sapos').style.display = 'none';
+            logVisual("Ambiente redefinido. Sapos removidos.", "info");
         }
-
-        const txtTermosCV = `================================================================
-                    AXEL OTOMARI - VOICEBANK
-================================================================
-Developer/Producers: ざりくP (Zarik-P)
-
-Hello, thank you for installing the Axel Otomari CV 1 Voicebank!
-I really appreciate it.
-Please read carefully and follow the terms of use before using.
-By installing this voicebank, you automatically agree to these terms.
-
-----------------------------------------------------------------
-                       TERMS OF USE
-----------------------------------------------------------------
-
-1. COMMERCIAL USE
-- Commercial use of this voicebank is ALLOWED for music
-  production, indie games, animations, and other audio projects.
-- You MUST give credit to the creator as "ざりくP" or "Zarik-P"
-  whenever you use this voicebank in your projects.
-
-2. PROHIBITED CONTENT (AGE RESTRICTION)
-- You are STRICTLY PROHIBITED from using this voicebank to
-  create NSFW, sexually explicit, or sexualized content of
-  any kind.
-- *REASON:* The voice provider of this voicebank was a minor
-  at the time of recording. Please respect this rule.
-
-3. CHARACTER & MERCHANDISING RIGHTS
-- You CANNOT sell or make a profit from physical merchandise
-  featuring Axel Otomari (such as T-shirts, keychains, stickers,
-  or any other physical products).
-- Creating physical merchandise like T-shirts or stickers is
-  ALLOWED ONLY for personal use, hobby, or non-commercial purposes.
-- You CAN freely use the character design and official
-  illustrations for Music Videos (MVs), song covers, and album
-  artwork related to your music projects.
-
-----------------------------------------------------------------
-                  DEMONSTRATION AUDIO SAMPLE
-----------------------------------------------------------------
-- The included file "sample.wav" is a 5-second technical
-  demonstration of the voicebank.
-- The original song featured in this sample is
-  "Liar Dancer".
-- Sample.Wav By @masaradasarada
-- All composition rights belong to their respective owner.
-  This sample is for demonstration purposes only.
-- YOU ARE STRICTLY PROHIBITED FROM USING THIS SAMPLE FILE IN
-  YOUR OWN PROJECTS OR AUDIO WORKS.
-
-================================================================`;
-
-        const txtTermosSecreto = `================================================================
-                    AXEL OTOMARI - VOICEBANK (OLD)
-================================================================
-Developer/Producers: ざりくP (Zarik-P)
-
-Hello, thank you for installing the Axel Otomari Old Voicebank!
-I really appreciate it.
-Please read carefully and follow the terms of use before using.
-By installing this voicebank, you automatically agree to these terms.
-
-----------------------------------------------------------------
-                       TERMS OF USE
-----------------------------------------------------------------
-
-1. COMMERCIAL USE
-- Commercial use of this voicebank is ALLOWED for music
-  production, indie games, animations, and other audio projects.
-- You MUST give credit to the creator as "ざりくP" or "Zarik-P"
-  whenever you use this voicebank in your projects.
-
-2. PROHIBITED CONTENT (AGE RESTRICTION)
-- You are STRICTLY PROHIBITED from using this voicebank to
-  create NSFW, sexually explicit, or sexualized content of
-  any kind.
-- *REASON:* The voice provider of this voicebank was a minor
-  at the time of recording. Please respect this rule.
-
-3. CHARACTER & MERCHANDISING RIGHTS
-- You CANNOT sell or make a profit from physical merchandise
-  featuring Axel Otomari (such as T-shirts, keychains, stickers,
-  or any other physical products).
-- Creating physical merchandise like T-shirts or stickers is
-  ALLOWED ONLY for personal use, hobby, or non-commercial purposes.
-- You CAN freely use the character design and official
-  illustrations for Music Videos (MVs), song covers, and album
-  artwork related to your music projects.
-
-================================================================`;
-
-        const somSusto = document.getElementById('som-susto');
-        const somRevelar = document.getElementById('som-revelar');
-
-        async function carregarDownloadsDoServidor() {
-            logVisual("Iniciando requisição de carregamento do servidor...", "info");
-            try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000);
-
-                const resposta = await fetch(URL_PEGAR_VALOR, { 
-                    signal: controller.signal,
-                    mode: 'cors',
-                    credentials: 'omit'
-                });
-                clearTimeout(timeoutId);
-
-                if (resposta.ok) {
-                    const texto = await resposta.text();
-                    const numeroLimpo = parseInt(texto.trim());
-                    
-                    if (!isNaN(numeroLimpo)) {
-                        numeroDownloadsGlobal = numeroLimpo;
-                        localStorage.setItem('axel_fallback_downloads', numeroDownloadsGlobal);
-                        document.getElementById('numDownloads').innerText = numeroDownloadsGlobal;
-                        logVisual(`Contador loaded: ${numeroDownloadsGlobal}`, "success");
-                        return;
-                    }
-                }
-                throw new Error("Resposta inválida do servidor.");
-            } catch (erro) {
-                logVisual("Falha na sincronização online. Resgatando dados locais...", "error");
-                const backupLocal = localStorage.getItem('axel_fallback_downloads');
-                numeroDownloadsGlobal = backupLocal ? parseInt(backupLocal) : 14;
-                document.getElementById('numDownloads').innerText = numeroDownloadsGlobal;
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            verificarParametroDebug();
-            carregarDownloadsDoServidor();
-            inicializarFiltroAntiLixo();
-            
-            document.querySelectorAll('.nav-menu a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            logVisual("Página inicializada e protegida contra injeções de texto.", "info");
-        });
-
-        // Técnica para habilitar o contexto de áudio em qualquer clique ou toque inicial
-        function desbloquearAudio() {
-            if (!audioCtx) {
-                // Instancia a Web Audio API com segurança após ação humana
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                carregarAudioBufferSapo();
-            }
-
-            if(somSusto) somSusto.load(); 
-            if(somRevelar) somRevelar.load();
-            
-            document.removeEventListener('click', desbloquearAudio);
-            document.removeEventListener('touchstart', desbloquearAudio);
-        }
-        document.addEventListener('click', desbloquearAudio);
-        document.addEventListener('touchstart', desbloquearAudio);
 
         function abrirTermos(tipoBanco) {
             bancoAtualSelecionado = tipoBanco;
-            logVisual(`Modal de termos aberto para o banco: [${tipoBanco}]`, "info");
-            
-            if (tipoBanco === 'secreto') {
-                document.getElementById('termsText').value = txtTermosSecreto;
-            } else {
-                document.getElementById('termsText').value = txtTermosCV;
-            }
-
+            document.getElementById('termsText').value = txtTermosCV;
             document.getElementById('radio-yes').checked = false;
             document.getElementById('radio-no').checked = false;
             document.getElementById('termsModal').classList.add('active');
+            logVisual(`Modal de termos aberto para o banco: ${tipoBanco}`, "info");
         }
 
-        function fecharTermos() {
-            document.getElementById('termsModal').classList.remove('active');
-        }
-
-        async function registrarDownloadNoServidor(novoValor) {
-            try {
-                await fetch(URL_TROCAR_VALOR + novoValor, { mode: 'no-cors' });
-            } catch (e) {
-                logVisual("Falha no envio de dados assíncronos.", "error");
-            }
-            localStorage.setItem('axel_fallback_downloads', novoValor);
-        }
+        function fecharTermos() { document.getElementById('termsModal').classList.remove('active'); }
 
         function prosseguirDownload() {
             const aceitou = document.getElementById('radio-yes').checked;
-            const recusou = document.getElementById('radio-no').checked;
-
-            if (!aceitou && !recusou) {
-                alert("Por favor, selecione uma das opções para prosseguir!");
+            if (!aceitou) {
+                if(document.getElementById('radio-no').checked) {
+                    fecharTermos(); window.scrollTo(0, 0);
+                    logVisual("Download negado pelo usuário. Carregando evento crítico.", "info");
+                    if(somSusto) somSusto.play().catch(e=>{});
+                    document.getElementById('body-main').classList.add('triggered-red', 'shaking-world');
+                    document.getElementById('easter-egg-container').classList.add('active');
+                    setTimeout(() => { window.location.href = "https://www.google.com"; }, 3000);
+                } else { alert("Selecione uma opção!"); }
                 return;
             }
+            fecharTermos();
+            numeroDownloadsGlobal++;
+            document.getElementById('numDownloads').innerText = numeroDownloadsGlobal;
+            logVisual(`Download aceito. Novo número de downloads registrado: ${numeroDownloadsGlobal}`, "success");
+            try { fetch(URL_TROCAR_VALOR + numeroDownloadsGlobal, { mode: 'no-cors' }); } catch(e){}
 
-            if (aceitou) {
-                logVisual("Termos de uso aceitos.", "success");
-                fecharTermos();
-                
-                numeroDownloadsGlobal += 1;
-                document.getElementById('numDownloads').innerText = numeroDownloadsGlobal;
-                registrarDownloadNoServidor(numeroDownloadsGlobal);
-
-                const a = document.createElement('a');
-                if (bancoAtualSelecionado === 'secreto') {
-                    logVisual("Disparando download do voicebank antigo...", "success");
-                    a.href = LINK_DOWNLOAD_AXEL_SECRETO + "?file=/AxelOtomari_Old.zip";
-                    a.download = "AxelOtomari_Old.zip";
-                } else {
-                    logVisual("Disparando download do voicebank CV principal...", "success");
-                    a.href = LINK_DOWNLOAD_AXEL_CV + "?file=/AxelOtomariCV.zip";
-                    a.download = "AxelOtomariCV.zip";
-                }
-                a.target = "_blank"; 
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-
-            } else if (recusou) {
-                logVisual("Termos recusados! Iniciando script preventivo.", "error");
-                fecharTermos();
-                window.scrollTo(0, 0);
-                
-                if(somSusto) somSusto.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
-                
-                const corpo = document.getElementById('body-main');
-                const sapoContainer = document.getElementById('easter-egg-container');
-                
-                corpo.classList.add('triggered-red');
-                sapoContainer.classList.add('active');
-                corpo.classList.add('shaking-world');
-                
-                setTimeout(function() {
-                    window.location.href = "https://www.google.com";
-                }, 3000);
+            const a = document.createElement('a');
+            if (bancoAtualSelecionado === 'secreto') {
+                a.href = LINK_DOWNLOAD_AXEL_SECRETO;
+            } else {
+                a.href = (versaoAtivaDropdown === '1.3') ? LINK_DOWNLOAD_AXEL_V1_3 : LINK_DOWNLOAD_AXEL_V1_0;
             }
+            a.target = "_blank";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
 
-        document.getElementById('btnBaixarTopo').addEventListener('click', function() {
-            document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        document.getElementById('btnOqueEUtau').addEventListener('click', function() {
-            const box = document.getElementById('utauBox');
-            box.style.display = (box.style.display === 'block') ? 'none' : 'block';
-        });
-
-        document.getElementById('btnCVVC').addEventListener('click', function() {
-            if (document.getElementById('cardSecreto').style.display === 'block') return;
-
-            cliquesCVVC++;
-            logVisual(`Clique no botão CVVC: ${cliquesCVVC}/7`, "info");
-            
-            if (cliquesCVVC === 7) {
-                logVisual("Gatilho secreto ativado!", "success");
-                
-                if(somRevelar) {
-                    somRevelar.play().catch(e => console.log("Bloqueio de áudio"));
-                }
-                
-                document.getElementById('cardSecreto').style.display = 'block';
-                
-                const contadorElemento = document.getElementById('contadorVBs');
-                let valorAtual = parseInt(contadorElemento.innerText) || 1;
-                contadorElemento.innerText = valorAtual + 1;
-                
-                document.getElementById('cardSecreto').scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-
-        function clicarAxelLogo() {
-            cliquesAxelLogo++;
-            logVisual(`Clique no nome do Axel: ${cliquesAxelLogo}/6`, "info");
-            
-            if (cliquesAxelLogo === 6) {
-                cliquesAxelLogo = 0;
-                logVisual("Easter Egg do Axel Careca ativado!", "success");
-                
-                if (somRevelar) {
-                    somRevelar.currentTime = 0;
-                    somRevelar.play().catch(e => console.log("Bloqueio de áudio"));
-                }
-                
-                const modal = document.getElementById('easterEggModal');
-                if (modal) {
-                    modal.classList.add('active');
-                }
-            }
-        }
-
-        function fecharEasterEgg() {
-            const modal = document.getElementById('easterEggModal');
-            if (modal) {
-                modal.classList.remove('active');
-            }
-        }
-
-        function inicializarFiltroAntiLixo() {
-            const body = document.body;
-            const wrapperId = "pageWrapper";
-
-            function limparNosInvalidos() {
-                const filhos = Array.from(body.childNodes);
-                filhos.forEach(no => {
-                    if (no.id !== wrapperId && 
-                        no.id !== "visual-logger-panel" && 
-                        no.id !== "navMenu" && 
-                        no.id !== "btn-limpar-sapos" && 
-                        no.id !== "termsModal" && 
-                        no.id !== "easterEggModal" && 
-                        no.id !== "easter-egg-container" && 
-                        no.className !== "falling-frog") {
-                        if (no.nodeType === Node.TEXT_NODE && no.textContent.trim() !== "") {
-                            no.textContent = ""; 
-                        } else if (no.nodeType === Node.ELEMENT_NODE) {
-                            const tag = no.tagName.toLowerCase();
-                            if (tag !== 'script' && tag !== 'audio' && tag !== 'link' && tag !== 'style') {
-                                no.remove(); 
-                            }
-                        }
+        async function carregarDownloadsDoServidor() {
+            try {
+                const resposta = await fetch(URL_PEGAR_VALOR);
+                if (resposta.ok) {
+                    const n = parseInt(await resposta.text());
+                    if (!isNaN(n)) {
+                        numeroDownloadsGlobal = n;
+                        document.getElementById('numDownloads').innerText = n;
                     }
-                });
-            }
+                }
+            } catch (erro) { document.getElementById('numDownloads').innerText = "14"; }
+        }
 
-            const observador = new MutationObserver(() => {
-                limparNosInvalidos();
+        window.addEventListener('DOMContentLoaded', () => {
+            carregarDownloadsDoServidor();
+            inicializarFiltroAntiLixo();
+            document.getElementById('btnBaixarTopo').addEventListener('click', () => {
+                document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
+            });
+            document.getElementById('btnOqueEUtau').addEventListener('click', () => {
+                const box = document.getElementById('utauBox');
+                box.style.display = (box.style.display === 'block') ? 'none' : 'block';
             });
 
-            observador.observe(body, { childList: true, characterData: true, subtree: false });
-            limparNosInvalidos();
+            document.getElementById('btnCVVC').addEventListener('click', function() {
+                cliquesCVVC++;
+                logVisual(`Clique no botão CVVC indisponível. Contador: ${cliquesCVVC}/7`, "info");
+                if (cliquesCVVC === 7) {
+                    logVisual("Easter Egg acionado: Protótipo Histórico V1 desbloqueado!", "success");
+                    if(somRevelar) {
+                        somRevelar.currentTime = 0;
+                        somRevelar.play().catch(e=>{});
+                    }
+                    document.getElementById('cardSecreto').style.display = 'block';
+                    document.getElementById('contadorVBs').innerText = "2";
+                    document.getElementById('cardSecreto').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        function desbloquearAudio() {
+            if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); carregarAudioBufferSapo(); }
+            if(somSusto) somSusto.load(); if(somRevelar) somRevelar.load();
+            document.removeEventListener('click', desbloquearAudio);
+        }
+        document.addEventListener('click', desbloquearAudio);
+
+        function fecharEasterEgg() { document.getElementById('easterEggModal').classList.remove('active'); }
+
+        // Filtro corrigido para permitir o funcionamento dos sapos voadores sem deletá-los
+        function inicializarFiltroAntiLixo() {
+            const observador = new MutationObserver(() => {
+                Array.from(document.body.childNodes).forEach(no => {
+                    if (!["pageWrapper", "visual-logger-panel", "navMenu", "btn-limpar-sapos", "termsModal", "easterEggModal", "easter-egg-container"].includes(no.id) && no.className !== "falling-frog") {
+                        if (no.nodeType === Node.TEXT_NODE && no.textContent.trim() !== "") no.textContent = "";
+                        else if (no.nodeType === Node.ELEMENT_NODE && !['script', 'audio', 'link', 'style', 'img'].includes(no.tagName.toLowerCase())) no.remove();
+                    }
+                });
+            });
+            observador.observe(document.body, { childList: true, characterData: true });
         }
     </script>
 </body>
